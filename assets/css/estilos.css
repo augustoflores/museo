@@ -10,24 +10,25 @@ html, body{
 	width:1024px;
 	height: 768px;
 }
-.infopieza{
-	position:absolute;
-	top:0;
-	left:0;
-	display:block;
+.infopieza {
+    display: block;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
 }
-#areaimagen{
-	width: 333px;
-	height: 768px;
-	position: absolute;
-	left: 0;
-	top: 0;
-	display: block;
-	float: left;
-	background-color: #DDD;
-	text-align: center;
+#areaimagen {
+    background-color: #ddd;
+    display: block;
+    float: left;
+    height: 768px;
+    left: 0;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 33%;
 }
-#areacontenidos {
+#areatextos {
     float: right;
     height: 768px;
     left: 333px;
@@ -57,9 +58,9 @@ html, body{
     display: block;
     float: left;
     font-size: 2em;
-    left: -26px;
-    top:10px;
+    left: -22px;
     position: absolute;
+    top: -5px;
 }
 #descripcionimagen{
 	position: relative;
@@ -72,4 +73,11 @@ html, body{
 	width:1024px;
 	height: 768px;
 	background-color: #fff;
+}
+#areacontenidos {
+    margin: 50px;
+    position: relative;
+}
+#margenimagenes {
+    margin: 50px;
 }
