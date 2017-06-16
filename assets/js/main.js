@@ -2,9 +2,13 @@ $(function() {
 	var sala=0;
 	var pieza=0;
 	var max=0;
+	var slide = $(".swiper-slide").remove();
+	var swiper = new Swiper('#pantalla');
 
 	$("#menu").click(function() {
 		$("#menusalas").show("fast");
+		$("#swiper-wrapper").hide(0);
+
 	});	
 
 	$(".sala").click(function() {
@@ -12,7 +16,8 @@ $(function() {
 		sala=$(this).data("sala");
 		max=$(this).data("piezas");
 		pieza=1;
-		cargaInfo();
+		crearSlides(max);
+		//cargaInfo();
 		$("#menusalas").hide("fast");
 	});
 
@@ -29,7 +34,6 @@ $(function() {
 			return false;
 		}
 		cargaInfo();
-		//$( this).trigger( "custom", [ pieza, max ] );
 	});
 
 	$("#atras").click(function() {
@@ -41,10 +45,6 @@ $(function() {
 		cargaInfo();
 		$( this).trigger( "custom", [ pieza, max ] );
 	});
-	/*$( "#atras, #adelante" ).on( "custom", function( event, pieza, max ) {
-		navegacionDisponible(pieza,max);
-	});*/
-
 	function navegacionDisponible(){
 		if(pieza==1){
 			$("#atras").fadeTo("fast",.5);
@@ -57,21 +57,26 @@ $(function() {
 			$("#adelante").fadeTo("fast",1);
 		}
 		$(".sala").fadeTo(0,1);
-		console.log($(".sala").find("[data-sala='" + sala + "']"));
 		$("#menusalas").find("[data-sala='" + sala + "']").fadeTo("fast",.5);
 	}
-
-	function cargaInfo(){
+	function crearSlides(num){
 		resetInfo();
-		$("#areacontenidos" ).load( "contenidos/sala_"+sala+"/textos/texto_"+pieza+".html" );
-		$("#descripcionimagen" ).load( "contenidos/sala_"+sala+"/imagenes/imagen_"+pieza+".html" );
-		$("#imagen").attr("src","contenidos/sala_"+sala+"/imagenes/png/imagen_"+pieza+".png");
-		navegacionDisponible()
+		for(i=1; i<num; i++){
+			nuevo= $(".swiper-wrapper").append('<div data-id="'+i+'" id="slide_'+i+'"class="swiper-slide"></div>');
+			$("#slide_"+i).load( "contenidos/slide.html", function() {
+				$(this).find(".imagen").attr("src","contenidos/sala_"+sala+"/imagenes/png/imagen_"+$(this).data("id")+".png")
+				$(this).find(".areacontenidos").load( "contenidos/sala_"+sala+"/textos/texto_"+$(this).data("id")+".html" );
+				$(this).find(".descripcionimagen" ).load( "contenidos/sala_"+sala+"/imagenes/imagen_"+$(this).data("id")+".html" );
+			} );
+		}
+		//if(swiper){
+		//	swiper.destroy();
+		//}
+		
+		$("#swiper-wrapper").show(0);
 	}
 	function resetInfo(){
-		$("#areacontenidos" ).html("");
-		$("#descripcionimagen" ).html("");
-		$("#imagen").attr("src","");
+		$(".swiper-slide").remove();
 	}
 	function resetVars(){
 		sala=0;

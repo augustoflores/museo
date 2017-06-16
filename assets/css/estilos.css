@@ -17,7 +17,7 @@ html, body{
     top: 0;
     width: 100%;
 }
-#areaimagen {
+.areaimagen {
     background-color: #ddd;
     display: block;
     float: left;
@@ -28,16 +28,18 @@ html, body{
     top: 0;
     width: 33%;
 }
-#areatextos {
+.areatextos {
     float: right;
-    height: 768px;
+    height: 568px;
     left: 333px;
+    overflow-y: scroll;
     position: absolute;
     top: 0;
     width: 680px;
 }
 .controles{
 	position: absolute;
+    z-index: 1;
 }
 .controles.abajo{
 	top:700px;
@@ -62,7 +64,7 @@ html, body{
     position: absolute;
     top: -5px;
 }
-#descripcionimagen{
+.descripcionimagen{
 	position: relative;
 }
 #menusalas{
@@ -73,11 +75,12 @@ html, body{
 	width:1024px;
 	height: 768px;
 	background-color: #fff;
+    z-index: 1;
 }
-#areacontenidos {
+.areacontenidos {
     margin: 50px;
     position: relative;
 }
-#margenimagenes {
+.margenimagenes {
     margin: 50px;
 }
