@@ -73,8 +73,8 @@ $(function() {
 						for(ii=1;ii<=max;ii++){
 							nuevaimagen= $(this).find(".margenimagenes").append('<div id="imagen_'+ii+'" data-id="'+ii+'"class="contenedorimagen"></div>');
 							$(this).find("#imagen_"+ii).load( "contenidos/imagen.html", function() {
-								$(this).find(".imagen").attr("src","contenidos/sala_"+sala+"/imagenes/png/imagen_"+$(padre).data("id")+"_"+$(this).data("id")+".png")
-								$(this).find(".descripcionimagen" ).load( "contenidos/sala_"+sala+"/imagenes/imagen_"+$(padre).data("id")+"_"+$(this).data("id")+".html" );
+								$(this).find(".imagen").attr("src","contenidos/sala_"+sala+"/imagenes/png/imagen_"+$(padre).data("id")+"."+$(this).data("id")+".png")
+								$(this).find(".descripcionimagen" ).load( "contenidos/sala_"+sala+"/imagenes/imagen_"+$(padre).data("id")+"."+$(this).data("id")+".html" );
 							});
 
 						}

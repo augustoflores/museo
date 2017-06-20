@@ -67,6 +67,7 @@ html, body{
 }
 .descripcionimagen{
 	position: relative;
+    margin: 20px 10px;
 }
 #menusalas{
 	position:absolute;
@@ -83,5 +84,5 @@ html, body{
     position: relative;
 }
 .margenimagenes {
-    margin: 50px;
+    margin: 20px 10px;
 }
