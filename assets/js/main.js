@@ -61,7 +61,7 @@ $(function() {
 	}
 	function crearSlides(num, multiples){
 		resetInfo();
-		for(i=1; i<=num; i++){
+		for(i=0; i<=num; i++){
 			nuevo= $(".swiper-wrapper").append('<div data-id="'+i+'" id="slide_'+i+'"class="swiper-slide"></div>');
 			$("#slide_"+i).load( "contenidos/slide.html", function() {
 				$(this).find(".areacontenidos").load( "contenidos/sala_"+sala+"/textos/texto_"+$(this).data("id")+".html" );
@@ -70,7 +70,7 @@ $(function() {
 					name="pieza_"+$(padre).data("id");
 					max=multiples[name];
 					if(max){
-						for(ii=1;ii<=max;ii++){
+						for(ii=0;ii<=max;ii++){
 							nuevaimagen= $(this).find(".margenimagenes").append('<div id="imagen_'+ii+'" data-id="'+ii+'"class="contenedorimagen"></div>');
 							$(this).find("#imagen_"+ii).load( "contenidos/imagen.html", function() {
 								$(this).find(".imagen").attr("src","contenidos/sala_"+sala+"/imagenes/png/imagen_"+$(padre).data("id")+"."+$(this).data("id")+".png")
