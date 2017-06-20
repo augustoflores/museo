@@ -27,6 +27,7 @@ html, body{
     text-align: center;
     top: 0;
     width: 33%;
+    overflow-y: scroll;
 }
 .areatextos {
     float: right;

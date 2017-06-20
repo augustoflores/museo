@@ -15,9 +15,9 @@ $(function() {
 		resetVars();
 		sala=$(this).data("sala");
 		max=$(this).data("piezas");
+		multiples=$(this).data("piezasmultiples");
 		pieza=1;
-		crearSlides(max);
-		//cargaInfo();
+		crearSlides(max,multiples);
 		$("#menusalas").hide("fast");
 	});
 
@@ -59,20 +59,70 @@ $(function() {
 		$(".sala").fadeTo(0,1);
 		$("#menusalas").find("[data-sala='" + sala + "']").fadeTo("fast",.5);
 	}
-	function crearSlides(num){
+	function crearSlides(num, multiples){
 		resetInfo();
-		for(i=1; i<num; i++){
+		for(i=1; i<=num; i++){
 			nuevo= $(".swiper-wrapper").append('<div data-id="'+i+'" id="slide_'+i+'"class="swiper-slide"></div>');
 			$("#slide_"+i).load( "contenidos/slide.html", function() {
-				$(this).find(".imagen").attr("src","contenidos/sala_"+sala+"/imagenes/png/imagen_"+$(this).data("id")+".png")
 				$(this).find(".areacontenidos").load( "contenidos/sala_"+sala+"/textos/texto_"+$(this).data("id")+".html" );
-				$(this).find(".descripcionimagen" ).load( "contenidos/sala_"+sala+"/imagenes/imagen_"+$(this).data("id")+".html" );
+				var padre=this;
+				if(multiples){
+					name="pieza_"+$(padre).data("id");
+					max=multiples[name];
+					if(max){
+						for(ii=1;ii<=max;ii++){
+							nuevaimagen= $(this).find(".margenimagenes").append('<div id="imagen_'+ii+'" data-id="'+ii+'"class="contenedorimagen"></div>');
+							$(this).find("#imagen_"+ii).load( "contenidos/imagen.html", function() {
+								$(this).find(".imagen").attr("src","contenidos/sala_"+sala+"/imagenes/png/imagen_"+$(padre).data("id")+"_"+$(this).data("id")+".png")
+								$(this).find(".descripcionimagen" ).load( "contenidos/sala_"+sala+"/imagenes/imagen_"+$(padre).data("id")+"_"+$(this).data("id")+".html" );
+							});
+
+						}
+					}else{
+						nuevaimagen= $(this).find(".margenimagenes").append('<div id="imagen_1" class="contenedorimagen"></div>');
+						$(this).find("#imagen_1").load( "contenidos/imagen.html", function() {
+							$(this).find(".imagen").attr("src","contenidos/sala_"+sala+"/imagenes/png/imagen_"+$(padre).data("id")+".png")
+							$(this).find(".descripcionimagen" ).load( "contenidos/sala_"+sala+"/imagenes/imagen_"+$(padre).data("id")+".html" );
+						});
+					}
+				}else{
+					nuevaimagen= $(this).find(".margenimagenes").append('<div id="imagen_1" class="contenedorimagen"></div>');
+					$(this).find("#imagen_1").load( "contenidos/imagen.html", function() {
+						$(this).find(".imagen").attr("src","contenidos/sala_"+sala+"/imagenes/png/imagen_"+$(padre).data("id")+".png")
+						$(this).find(".descripcionimagen" ).load( "contenidos/sala_"+sala+"/imagenes/imagen_"+$(padre).data("id")+".html" );
+					});
+
+				}
+
+
+
+				/*$(this).find(".margenimagenes").load( "contenidos/imagen.html", function() {
+					if(multiples){
+						name="pieza_"+$(padre).data("id");
+						if(multiples[name]){
+							max=multiples[name];
+							$(this).find(".imagen").attr("src","contenidos/sala_"+sala+"/imagenes/png/imagen_"+$(padre).data("id")+"_1.png")
+							$(this).find(".descripcionimagen" ).load( "contenidos/sala_"+sala+"/imagenes/imagen_"+$(padre).data("id")+"_1.html" );	
+							for(ii=1;ii<=max;ii++){
+								
+								$(this).find(".imagen").attr("src","contenidos/sala_"+sala+"/imagenes/png/imagen_"+$(padre).data("id")+"_"+ii+".png")
+								$(this).find(".descripcionimagen" ).load( "contenidos/sala_"+sala+"/imagenes/imagen_"+$(padre).data("id")+"_"+ii+".html" );	
+							}
+						}else{
+							$(this).find(".imagen").attr("src","contenidos/sala_"+sala+"/imagenes/png/imagen_"+$(padre).data("id")+".png")
+							$(this).find(".descripcionimagen" ).load( "contenidos/sala_"+sala+"/imagenes/imagen_"+$(padre).data("id")+".html" );	
+						}
+					}else{
+						$(this).find(".imagen").attr("src","contenidos/sala_"+sala+"/imagenes/png/imagen_"+$(padre).data("id")+".png")
+						$(this).find(".descripcionimagen" ).load( "contenidos/sala_"+sala+"/imagenes/imagen_"+$(padre).data("id")+".html" );
+					}
+
+				});*/
+
 			} );
 		}
-		//if(swiper){
-		//	swiper.destroy();
-		//}
-		
+		swiper.slideTo(0,0);
+		swiper.update();
 		$("#swiper-wrapper").show(0);
 	}
 	function resetInfo(){
