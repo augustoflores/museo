@@ -2,49 +2,60 @@ $(function() {
 	var sala=0;
 	var pieza=0;
 	var max=0;
-	var slide = $(".swiper-slide").remove();
+	//var slide = $(".swiper-slide").remove();
 	var swiper = new Swiper('#pantalla');
 
 	$("#menu").click(function() {
-		$("#menusalas").show("fast");
+		$("#menusalas").show(0);
+		$("#swiper-wrapper").hide(0);
+
+	});	
+	$("#atras").click(function() {
+		swiper.slidePrev();
+	});	
+	$("#adelante").click(function() {
+		swiper.slideNext();
+	});	
+	$("#cerrar").click(function() {
+		$("#menusalas").hide(0);
 		$("#swiper-wrapper").hide(0);
 
 	});	
 
 	$(".sala").click(function() {
+		swiper.removeAllSlides();
 		resetVars();
 		sala=$(this).data("sala");
 		max=$(this).data("piezas");
 		multiples=$(this).data("piezasmultiples");
 		pieza=1;
 		crearSlides(max,multiples);
-		$("#menusalas").hide("fast");
+		$("#menusalas").hide(0);
 	});
 
-	$("#siguiente").click(function() {
+	/*$("#siguiente").click(function() {
 		pieza=1;
 		sala++;
 		cargaInfo();
-	});
+	});*/
 
-	$("#adelante").click(function() {
+	function adelante() {
 		if(pieza<max){
 			pieza++;
 		}else{
 			return false;
 		}
-		cargaInfo();
-	});
+		//cargaInfo();
+	};
 
-	$("#atras").click(function() {
+	function atras() {
 		if(pieza>1){
 			pieza--;
 		}else{
 			return false;
 		}
-		cargaInfo();
-		$( this).trigger( "custom", [ pieza, max ] );
-	});
+		//cargaInfo();
+	};
 	function navegacionDisponible(){
 		if(pieza==1){
 			$("#atras").fadeTo("fast",.5);
@@ -70,7 +81,7 @@ $(function() {
 					name="pieza_"+$(padre).data("id");
 					max=multiples[name];
 					if(max){
-						for(ii=0;ii<=max;ii++){
+						for(ii=1;ii<=max;ii++){
 							nuevaimagen= $(this).find(".margenimagenes").append('<div id="imagen_'+ii+'" data-id="'+ii+'"class="contenedorimagen"></div>');
 							$(this).find("#imagen_"+ii).load( "contenidos/imagen.html", function() {
 								$(this).find(".imagen").attr("src","contenidos/sala_"+sala+"/imagenes/png/imagen_"+$(padre).data("id")+"."+$(this).data("id")+".png")
@@ -93,31 +104,6 @@ $(function() {
 					});
 
 				}
-
-
-
-				/*$(this).find(".margenimagenes").load( "contenidos/imagen.html", function() {
-					if(multiples){
-						name="pieza_"+$(padre).data("id");
-						if(multiples[name]){
-							max=multiples[name];
-							$(this).find(".imagen").attr("src","contenidos/sala_"+sala+"/imagenes/png/imagen_"+$(padre).data("id")+"_1.png")
-							$(this).find(".descripcionimagen" ).load( "contenidos/sala_"+sala+"/imagenes/imagen_"+$(padre).data("id")+"_1.html" );	
-							for(ii=1;ii<=max;ii++){
-								
-								$(this).find(".imagen").attr("src","contenidos/sala_"+sala+"/imagenes/png/imagen_"+$(padre).data("id")+"_"+ii+".png")
-								$(this).find(".descripcionimagen" ).load( "contenidos/sala_"+sala+"/imagenes/imagen_"+$(padre).data("id")+"_"+ii+".html" );	
-							}
-						}else{
-							$(this).find(".imagen").attr("src","contenidos/sala_"+sala+"/imagenes/png/imagen_"+$(padre).data("id")+".png")
-							$(this).find(".descripcionimagen" ).load( "contenidos/sala_"+sala+"/imagenes/imagen_"+$(padre).data("id")+".html" );	
-						}
-					}else{
-						$(this).find(".imagen").attr("src","contenidos/sala_"+sala+"/imagenes/png/imagen_"+$(padre).data("id")+".png")
-						$(this).find(".descripcionimagen" ).load( "contenidos/sala_"+sala+"/imagenes/imagen_"+$(padre).data("id")+".html" );
-					}
-
-				});*/
 
 			} );
 		}

@@ -17,28 +17,33 @@
 <body>
 	<div id="pantalla">
 			<div class="swiper-wrapper">
-				<div class="swiper-slide">
-					
+
+
+			</div>
+
+			<img class="controles izquierda arriba"  src="assets/img/menu.png" width="35" id="menu">
+
+			<img class="controles abajo izquierda"  src="assets/img/back.png" width="40" id="atras">
+			<img class="controles abajo derecha"  src="assets/img/forward.png" width="40" id="adelante">
+
+
+			<div id="menusalas">
+				<div class="margenesmenu">
+					<div class="sala" data-sala="1" data-piezas="9" data-piezasmultiples='{"pieza_2":"2","pieza_7":"4"}'>Sala 1</div>	
+					<div class="sala" data-sala="2" data-piezas="5">Sala 2</div>	
+					<div class="sala" data-sala="3" data-piezas="4">Sala 3</div>	
+					<div class="sala" data-sala="4" data-piezas="0">Sala 4</div>	
+					<div class="sala" data-sala="5" data-piezas="0">Sala 5</div>
+					<div class="sala" data-sala="6" data-piezas="0">Sala 6</div>	
+					<div class="sala" data-sala="7" data-piezas="0">Sala 7</div>
+					<div class="sala" data-sala="8" data-piezas="0">Sala 8</div>	
+				</div>
+				<div class="cerrar">
+					<img src="assets/img/close.png" width="71" id="cerrar">
 				</div>
 			</div>
-
-			<div class="controles izquierda arriba" id="menu">menu</div>
-
-			<div class="controles derecha arriba" id="siguiente">siguiente</div>
-
-			<div class="controles abajo izquierda" id="atras">atras</div>
-			<div class="controles abajo enmedio" id="adelante">adelante</div>
-			<div class="controles abajo derecha" id="atras">abajo</div>
-			<div id="menusalas">
-				<div class="sala" data-sala="1" data-piezas="9" data-piezasmultiples='{"pieza_2":"2","pieza_7":"4"}'>Sala 1</div>	
-				<div class="sala" data-sala="2" data-piezas="5" >Sala 2</div>	
-				<div class="sala" data-sala="3" data-piezas="4">Sala 3</div>	
-
-			</div>
+			    <div class="swiper-pagination"></div>
 	</div>
-
-
-
 
   <script src="assets/js/jquery.js"></script>
   <script src="assets/js/swiper.jquery.js"></script>

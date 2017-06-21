@@ -27,11 +27,10 @@ html, body{
     text-align: center;
     top: 0;
     width: 33%;
-    overflow-y: scroll;
 }
 .areatextos {
     float: right;
-    height: 568px;
+    height: 708px;
     left: 333px;
     overflow-y: scroll;
     position: absolute;
@@ -43,19 +42,19 @@ html, body{
     z-index: 1;
 }
 .controles.abajo{
-	top:700px;
+	top:718px;
 }
 .controles.derecha{
-	left: 950px;
+	left: 975px;
 }
 .controles.izquierda{
-	left: 30px;
+	left: 10px;
 }
 .controles.enmedio{
 	left: 300px;
 }
 .controles.arriba{
-	top: 20px;
+	top: 10px;
 }
 .primeraletra {
     display: block;
@@ -69,20 +68,39 @@ html, body{
 	position: relative;
     margin: 20px 10px;
 }
-#menusalas{
-	position:absolute;
-	top:0;
-	left:0;
-	display:block;
-	width:1024px;
-	height: 768px;
-	background-color: #fff;
+#menusalas {
+    background-color: #FFF;
+    display: block;
+    height: 768px;
+    left: 0;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 1024px;
     z-index: 1;
+}
+.margenesmenu {
+    display: block;
+    margin: 163px auto auto;
+    width: 88%;
 }
 .areacontenidos {
     margin: 50px;
     position: relative;
 }
 .margenimagenes {
-    margin: 20px 10px;
+    margin: 52px 10px;
+    overflow-y:scroll;
+    height: 659px; 
+}
+.sala {
+    background-color: #ddd;
+    display: table-cell;
+    float: left;
+    height: 166px;
+    margin: 10px;
+    width: 203px;
+}
+#cerrar{
+    margin-top: 28px;
 }
