@@ -1,3 +1,7 @@
+(function($) {
+    $.fn.hasScrollBar = function() {
+		return this.get(0).scrollHeight+0 > this.get(0).clientHeight-0;    }
+})(jQuery);
 $(function() {
 	var sala=0;
 	var pieza=0;
@@ -85,7 +89,7 @@ $(function() {
 							nuevaimagen= $(this).find(".margenimagenes").append('<div id="imagen_'+ii+'" data-id="'+ii+'"class="contenedorimagen"></div>');
 							$(this).find("#imagen_"+ii).load( "contenidos/imagen.html", function() {
 								$(this).find(".imagen").attr("src","contenidos/sala_"+sala+"/imagenes/png/imagen_"+$(padre).data("id")+"."+$(this).data("id")+".png")
-								$(this).find(".descripcionimagen" ).load( "contenidos/sala_"+sala+"/imagenes/imagen_"+$(padre).data("id")+"."+$(this).data("id")+".html" );
+								$(this).find(".descripcionimagen" ).load( "contenidos/sala_"+sala+"/imagenes/imagen_"+$(padre).data("id")+"."+$(this).data("id")+".html",degradado($(padre).find(".margenimagenes")) );
 							});
 
 						}
@@ -93,24 +97,31 @@ $(function() {
 						nuevaimagen= $(this).find(".margenimagenes").append('<div id="imagen_1" class="contenedorimagen"></div>');
 						$(this).find("#imagen_1").load( "contenidos/imagen.html", function() {
 							$(this).find(".imagen").attr("src","contenidos/sala_"+sala+"/imagenes/png/imagen_"+$(padre).data("id")+".png")
-							$(this).find(".descripcionimagen" ).load( "contenidos/sala_"+sala+"/imagenes/imagen_"+$(padre).data("id")+".html" );
+							$(this).find(".descripcionimagen" ).load( "contenidos/sala_"+sala+"/imagenes/imagen_"+$(padre).data("id")+".html",degradado($(padre).find(".margenimagenes")) );
 						});
 					}
 				}else{
 					nuevaimagen= $(this).find(".margenimagenes").append('<div id="imagen_1" class="contenedorimagen"></div>');
 					$(this).find("#imagen_1").load( "contenidos/imagen.html", function() {
 						$(this).find(".imagen").attr("src","contenidos/sala_"+sala+"/imagenes/png/imagen_"+$(padre).data("id")+".png")
-						$(this).find(".descripcionimagen" ).load( "contenidos/sala_"+sala+"/imagenes/imagen_"+$(padre).data("id")+".html" );
+						$(this).find(".descripcionimagen" ).load( "contenidos/sala_"+sala+"/imagenes/imagen_"+$(padre).data("id")+".html",degradado($(padre).find(".margenimagenes")) );
 					});
 
 				}
-
+				degradado($(padre).find(".margenimagenes"));
 			} );
 		}
 		swiper.slideTo(0,0);
 		swiper.update();
 		$("#swiper-wrapper").show(0);
 	}
+	function degradado(obj){
+		console.log($(obj).hasScrollBar());
+		if($(obj).hasScrollBar()){
+		}else{
+			//$(obj).find(".degradado").hide(0);
+		};
+	};
 	function resetInfo(){
 		$(".swiper-slide").remove();
 	}
