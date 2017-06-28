@@ -7,19 +7,22 @@ $(function() {
 	var pieza=0;
 	var max=0;
 	//var slide = $(".swiper-slide").remove();
-	var swiper = new Swiper('#pantalla');
+	var swiper = new Swiper('#pantalla',{
+		nextButton:"#adelante",
+		prevButton:"#atras"
+	});
 
 	$("#menu").click(function() {
 		$("#menusalas").show(0);
 		$("#swiper-wrapper").hide(0);
 
 	});	
-	$("#atras").click(function() {
+	/*$("#atras").click(function() {
 		swiper.slidePrev();
 	});	
 	$("#adelante").click(function() {
 		swiper.slideNext();
-	});	
+	});*/	
 	$("#cerrar").click(function() {
 		$("#menusalas").hide(0);
 		$("#swiper-wrapper").hide(0);
